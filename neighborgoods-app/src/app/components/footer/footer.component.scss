@@ -1,0 +1,15 @@
+mat-toolbar-row {
+    padding-left: 40px;
+    padding-right: 40px;
+    justify-content: space-between;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+    height: 80px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
