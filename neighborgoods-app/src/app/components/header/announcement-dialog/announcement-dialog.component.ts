@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { ConfigService } from 'src/app/config.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-announcement-dialog',
@@ -10,13 +11,14 @@ import { ConfigService } from 'src/app/config.service';
   styleUrls: ['./announcement-dialog.component.scss']
 })
 export class AnnouncementDialogComponent implements OnInit {
-  constructor(public configService: ConfigService) { }
+  constructor(public configService: ConfigService, private _snackBar: MatSnackBar) { }
   public visible = true;
   public selectable = true;
   public removable = true;
   public addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   public userId = 1; // Input
+  public selectedPublishingType = "";
 
   public tagChips: TagChipType[] = [];
   public selectedCategory = "";
@@ -47,14 +49,12 @@ export class AnnouncementDialogComponent implements OnInit {
 
   public chooseCategory(category: string): void {
     this.selectedCategory = category;
-    console.log("Wybrany zakres: ", this.selectedCategory);
-    console.log("co do chuja ", this.addAnnouncementFormGroup.value);
-    console.log("duuuuupa: ", this.addAnnouncementFormGroup.valid);
   }
 
   public onSubmit():void {
     console.log("Add announcement form: ", this.addAnnouncementFormGroup.value);
     //this.configService.postAnnouncement(this.addAnnouncementFormGroup.value);
+    this.openSnackBar();
   }
 
   public addTagChip(event: MatChipInputEvent): void {
@@ -85,6 +85,15 @@ export class AnnouncementDialogComponent implements OnInit {
     console.log('Szukanie: ', this.tagChips);
   }
 
+  public choosePublishType(type: any): void {
+    this.selectedPublishingType = type;
+  }
+
+  public openSnackBar() {
+    this._snackBar.open('Twoje ogłoszenie zostało dodane.', '' , {
+      duration: 5000,
+    });
+  }
 }
 
 export interface TagChipType {

@@ -21,6 +21,16 @@
       </mat-select>
     </mat-form-field>
 
+    <mat-form-field appearance="fill">
+        <mat-label>Typ oferty</mat-label>
+        <mat-select [(ngModel)]="selectedPublishingType" formControlName="publishingType">
+          <mat-option [value]="'offer'" (click)="choosePublishType('offer')">Oferuję
+          </mat-option>
+          <mat-option [value]="'need'" (click)="choosePublishType('need')">Potrzebuję
+        </mat-option>
+        </mat-select>
+      </mat-form-field>
+
     <mat-form-field class="tags" appearance="outline">
         <mat-chip-list #chipList>
           <mat-chip *ngFor="let chip of tagChips" [selectable]="selectable" [removable]="removable"
