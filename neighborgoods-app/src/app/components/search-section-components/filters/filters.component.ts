@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {MatChipInputEvent} from '@angular/material/chips';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { MatChipInputEvent } from '@angular/material/chips';
 
 export interface SearchChipType {
   name: string;
@@ -9,29 +9,34 @@ export interface SearchChipType {
 @Component({
   selector: 'app-filters',
   templateUrl: './filters.component.html',
-  styleUrls: ['./filters.component.scss']
+  styleUrls: ['./filters.component.scss'],
 })
 export class FiltersComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  visible = true;
-  selectable = true;
-  removable = true;
+  public visible = true;
+  public selectable = true;
+  public removable = true;
   public addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  searchChips: SearchChipType[] = [];
+  public searchChips: SearchChipType[] = [];
 
-  addSearchChip(event: MatChipInputEvent): void {
+  public rangeOptions = [0, 1, 2, 3, 5, 10, 20, 50];
+  public selectedRange = 0;
+  public announcementCategory = [{id: "shopping", name: "Zakupy"}];
+  public selectedCategory = "";
+  
+  public ngOnInit(): void {}
+
+  
+
+  public addSearchChip(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
 
     // Add our fruit
     if ((value || '').trim()) {
-      this.searchChips.push({name: value.trim()});
+      this.searchChips.push({ name: value.trim() });
     }
 
     // Reset the input value
@@ -47,5 +52,24 @@ export class FiltersComponent implements OnInit {
       this.searchChips.splice(index, 1);
     }
   }
-}
 
+  //TODO
+  public search(): void {
+    console.log('Szukanie: ', this.searchChips);
+  }
+
+  //TODO
+  public chooseLocalization(localization: string): void {
+    console.log('Wybrana lokalizacja: ', localization);
+  }
+
+  public chooseRange(range: number): void {
+    this.selectedRange = range;
+    console.log("Wybrany zakres: ", this.selectedRange);
+  }
+
+  public chooseCategory(category: string): void {
+    this.selectedCategory = category;
+    console.log("Wybrany zakres: ", this.selectedCategory);
+  }
+}

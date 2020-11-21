@@ -1,16 +1,50 @@
 <div class="search-container">
-    <mat-form-field class="search">
-        <mat-chip-list #chipList>
-          <mat-chip *ngFor="let chip of searchChips" [selectable]="selectable"
-                   [removable]="removable" (removed)="removeSearchChip(chip)">
-            {{chip.name}}
-            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-          </mat-chip>
-          <input placeholder="Szukaj"
-                 [matChipInputFor]="chipList"
-                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                 [matChipInputAddOnBlur]="addOnBlur"
-                 (matChipInputTokenEnd)="addSearchChip($event)">
-        </mat-chip-list>
-      </mat-form-field>
+  <mat-form-field class="search">
+    <mat-chip-list #chipList>
+      <mat-chip *ngFor="let chip of searchChips" [selectable]="selectable" [removable]="removable"
+        (removed)="removeSearchChip(chip)">
+        {{ chip.name }}
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      </mat-chip>
+      <input placeholder="Szukaj" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="addSearchChip($event)" />
+      <mat-button class="search-button" (click)="search()">
+        <mat-icon>search</mat-icon>
+      </mat-button>
+    </mat-chip-list>
+  </mat-form-field>
+
+  <button mat-button [matMenuTriggerFor]="localization">Wybierz lokalizację</button>
+  <mat-menu #localization="matMenu">
+    <button mat-menu-item (click)="chooseLocalization('Lokalizacja')">Moja lokalizacja</button>
+    <button mat-menu-item [matMenuTriggerFor]="malopolskie">małopolskie</button>
+    <button mat-menu-item [matMenuTriggerFor]="mazowieckie">mazowieckie</button>
+  </mat-menu>
+
+  <mat-menu #malopolskie="matMenu">
+    <button mat-menu-item (click)="chooseLocalization('Kraków')">Kraków</button>
+    <button mat-menu-item (click)="chooseLocalization('Oświęcim')">Oświęcim</button>
+  </mat-menu>
+
+  <mat-menu #mazowieckie="matMenu">
+    <button mat-menu-item (click)="chooseLocalization('Warszawa')">Warszawa</button>
+  </mat-menu>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Zakres</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let option of rangeOptions" [value]="option" (click)="chooseRange(option)">+ {{option}} km
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Kategoria</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let category of announcementCategory" [value]="category.id" (click)="chooseCategory(category.id)">{{category.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
 </div>

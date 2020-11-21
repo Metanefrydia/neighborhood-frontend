@@ -1,8 +1,14 @@
 .search-container {
+    display: flex;
+    flex-wrap: nowrap;
     width: 100%;
 }
 
 mat-form-field {
     display: contents;
     font-size: 16px;
+}
+
+.search-button {
+    cursor: pointer;
 }
