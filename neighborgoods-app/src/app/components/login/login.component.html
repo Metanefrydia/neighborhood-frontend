@@ -1,0 +1,26 @@
+<div class="card-container">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Zaloguj się</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <!-- EMAIL INPUT -->
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput formControlName="emailFormControl" placeholder="annakowalska@example.com">
+        </mat-form-field>
+
+        <!-- PASSWORD INPUT -->
+        <mat-form-field class="example-full-width">
+          <mat-label>Hasło</mat-label>
+          <input type="password" matInput formControlName="passwordFormControl" placeholder="Hasło">
+        </mat-form-field>
+      </form>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button type="submit" [disabled]="!loginForm.valid" mat-button color="accent">Zaloguj się</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
