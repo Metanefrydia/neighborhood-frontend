@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,9 +15,15 @@ import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 import { AnnouncementCardComponent } from './components/main-section-components/announcement-card/announcement-card.component';
 import { FiltersComponent } from './components/search-section-components/filters/filters.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { AnnouncementDialogComponent } from './components/header/announcement-dialog/announcement-dialog.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +32,10 @@ import { FiltersComponent } from './components/search-section-components/filters
     FooterComponent,
     ContentComponent,
     AnnouncementCardComponent,
-    FiltersComponent
+    FiltersComponent,
+    LoginComponent,
+    SignupComponent,
+    AnnouncementDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -36,10 +46,20 @@ import { FiltersComponent } from './components/search-section-components/filters
     MatCardModule,
     MatChipsModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    MatMenuModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatDialogModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MatDialogRef,
+      useValue: {},
+    },
+  ],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {}

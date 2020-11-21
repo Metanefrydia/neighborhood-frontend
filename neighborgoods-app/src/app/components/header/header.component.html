@@ -17,16 +17,12 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <div class="logo-container">
-
-      <a href="">
-        <img src="assets/logo.png" class="logo" />
-      </a>
+        <img src="assets/logo.png" class="logo" routerLink="/mainpage" />
     </div>
 
     <div class="button-container">
-
-      <button mat-flat-button>Utwórz ogłoszenie</button>
-      <button mat-flat-button color="accent">Zaloguj</button>
+      <button mat-flat-button (click)="openDialog()">Utwórz ogłoszenie</button>
+      <button mat-flat-button color="accent" routerLink="/login">Zaloguj</button>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
