@@ -1,9 +1,13 @@
 .card-container {
-    width: 400px;
     height: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 mat-card {
+    width: 300px;
     margin: 20px;
 }
 

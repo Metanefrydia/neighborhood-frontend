@@ -1,0 +1,19 @@
+.create-announcement-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.dialog-container {
+    width: 600px;
+    height: 600px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+button {
+    width: 100px;
+}

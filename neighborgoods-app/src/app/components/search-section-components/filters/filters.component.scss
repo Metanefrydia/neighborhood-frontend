@@ -1,11 +1,25 @@
-.search-container {
+.main-container {
     display: flex;
-    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    margin: 30px;
+}
+
+.search-container {
+    width: 400px;
+}
+
+.filters-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 700px;
+}
+
+.search {
     width: 100%;
 }
 
 mat-form-field {
-    display: contents;
     font-size: 16px;
 }
 

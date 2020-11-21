@@ -1,4 +1,7 @@
+@import './src/variables.scss';
+
 .content-container {
+    background-color: rgba($main-purple, 0.03);
     padding: 10px;
 }
 

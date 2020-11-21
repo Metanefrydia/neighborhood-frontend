@@ -1,1 +1,46 @@
-<p>signup works!</p>
+<div class="card-container">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>Utwórz konto</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form class="example-form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+            <!-- USERNAME INPUT -->
+            <mat-form-field class="example-full-width">
+                <mat-label>Nazwa użytkownika</mat-label>
+                <input type="text" matInput formControlName="username" placeholder="Nazwa użytkonika">
+              </mat-form-field>
+
+              <!-- EMAIL INPUT -->
+          <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="email" placeholder="annakowalska@example.com">
+          </mat-form-field>
+
+          <!-- PASSWORD INPUT -->
+          <mat-form-field class="example-full-width">
+            <mat-label>Hasło</mat-label>
+            <input type="password" matInput formControlName="password" placeholder="Hasło">
+          </mat-form-field>
+
+            <!-- NUMBER INPUT -->
+            <mat-form-field class="example-full-width">
+                <mat-label>Numer telefonu</mat-label>
+                <input type="text" matInput formControlName="phoneNumber" placeholder="Numer telefonu">
+              </mat-form-field>
+
+        <!-- USER TYPE INPUT -->
+          <mat-form-field appearance="fill">
+            <mat-label>Typ konta</mat-label>
+            <mat-select formControlName="userType">
+              <mat-option *ngFor="let type of userTypes" [value]="type.id">{{type.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <button type="submit" [disabled]="!signupForm.valid" mat-flat-button color="primary">Utwórz konto</button>
+      </form>
+  </mat-card-content>  
+    </mat-card>
+  </div>
+  

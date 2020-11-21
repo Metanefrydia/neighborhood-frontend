@@ -16,11 +16,13 @@
           <mat-label>Hasło</mat-label>
           <input type="password" matInput formControlName="passwordFormControl" placeholder="Hasło">
         </mat-form-field>
-      </form>
+        <button type="submit" [disabled]="!loginForm.valid" mat-flat-button color="primary">Zaloguj się</button>
+    </form>
+</mat-card-content>
+<mat-card-actions>
+    <div class="no-account-info">Nie masz jeszcze konta?</div>
+    <button mat-flat-button color="accent" routerLink="/signup">Zarejestruj się!</button>
+</mat-card-actions>
 
-    </mat-card-content>
-    <mat-card-actions>
-      <button type="submit" [disabled]="!loginForm.valid" mat-button color="accent">Zaloguj się</button>
-    </mat-card-actions>
   </mat-card>
 </div>

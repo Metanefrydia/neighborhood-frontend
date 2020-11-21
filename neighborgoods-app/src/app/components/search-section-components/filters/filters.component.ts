@@ -23,12 +23,19 @@ export class FiltersComponent implements OnInit {
 
   public rangeOptions = [0, 1, 2, 3, 5, 10, 20, 50];
   public selectedRange = 0;
-  public announcementCategory = [{id: "shopping", name: "Zakupy"}];
+  public announcementCategory = [{id: "1", name:"animals", description:"Zwierzęta"}, 
+  {id: "2", name: "transport", description: "Transport"},
+  {id: "3", name: "work", description: "Praca"},
+  {id: "4", name: "shopping", description: "Ogłoszenia drobne"},
+  {id: "5", name: "babysitting", description: "Pomoc przy dziecku"},
+  {id: "6", name: "other", description: "Inne"},
+  {id: "7", name: "services", description: "Usługi"},
+  {id: "8", name: "meeting", description: "Spotkania"},
+  {id: "9", name: "accommodation", description: "Noclegi"}
+  ];
   public selectedCategory = "";
   
   public ngOnInit(): void {}
-
-  
 
   public addSearchChip(event: MatChipInputEvent): void {
     const input = event.input;

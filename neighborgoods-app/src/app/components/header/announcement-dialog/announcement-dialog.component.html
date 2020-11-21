@@ -1,13 +1,47 @@
 <div class="dialog-container">
-    <form class="create-announcement-form">
-        <mat-form-field appearance="outline">
-          <mat-label>Tytul</mat-label>
-          <input matInput placeholder="Tytul">
-        </mat-form-field>
+  <form class="create-announcement-form" [formGroup]="addAnnouncementFormGroup" (ngSubmit)="onSubmit()">
+    <h2>Dodaj ogłoszenie</h2>
+    <mat-form-field appearance="outline">
+      <mat-label>Tytul</mat-label>
+      <input matInput formControlName="name" placeholder="Tytul" />
+    </mat-form-field>
 
-        <mat-form-field appearance="outline">
-            <mat-label>Opis</mat-label>
-            <input matInput placeholder="Opis">
-        </mat-form-field>
-    </form>
+    <mat-form-field appearance="outline">
+      <mat-label>Cena</mat-label>
+      <input matInput formControlName="price" placeholder="Cena"/>
+      <span matSuffix>zł</span>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Kategoria</mat-label>
+      <mat-select formControlName="announcementType">
+        <mat-option *ngFor="let category of announcementCategory" [value]="category.name"
+          (click)="chooseCategory(category.name)">{{ category.description }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="tags" appearance="outline">
+        <mat-chip-list #chipList>
+          <mat-chip *ngFor="let chip of tagChips" [selectable]="selectable" [removable]="removable"
+            (removed)="removeTagChip(chip)">
+            {{ chip.name }}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input formControlName="tags" placeholder="Tagi" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="addTagChip($event)" />
+        </mat-chip-list>
+      </mat-form-field>
+
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label>Opis</mat-label>
+      <textarea matInput placeholder="Opis" formControlName="description"></textarea>
+    </mat-form-field>
+
+    <div class="button-container">
+      <button type="submit" [disabled]="!addAnnouncementFormGroup.valid" mat-flat-button color="accent">
+        Dodaj
+      </button>
+    </div>
+  </form>
 </div>
